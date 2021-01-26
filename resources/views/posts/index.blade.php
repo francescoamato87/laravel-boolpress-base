@@ -4,6 +4,13 @@
 
     <div class="container mb-5">
 
+        @if (session('post-deleted'))
+        <div class="alert alert-success">
+            Post '{{ session('post-deleted')}}' has been deleted successfully.
+        </div>
+
+        @endif
+
         <h1>BLOG ARCHIVE</h1>
 
         @forelse ($posts as $post)

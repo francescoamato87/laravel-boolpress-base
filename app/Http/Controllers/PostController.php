@@ -137,9 +137,21 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)    // <---$post = Post::find($id)
     {
-        //
+       $title = $post->title;
+       $image = $post->path_img;
+       $deleted = $post->delete();
+
+       if($deleted) {
+           if(!empty($post->path_img)){
+               Storage::disk('public')->delete($image);
+           }
+            return redirect()->route('posts.index')->with('post-deleted', $title);
+       } else{
+           return redirect()->route('homepage');
+        }
+
     }
 
     // Validation Rules (un campo centralizzato dove modificare i campi senza dover ripetere la funzione)
