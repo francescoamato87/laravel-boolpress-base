@@ -78,6 +78,12 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)->first();  // <---- PAGINA DI DETTAGLIO
         // dump($post);
+
+        // Check
+        if(empty($post)){
+            abort(404);
+        }
+
         return view('posts.show', compact('post'));
     }
 
