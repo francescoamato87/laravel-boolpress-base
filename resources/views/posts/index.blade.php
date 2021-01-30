@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container mb-5">
+    <div class="container mb-5 ">
 
         @if (session('post-deleted'))
         <div class="alert alert-success">

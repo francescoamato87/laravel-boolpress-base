@@ -14,6 +14,16 @@ class Post extends Model
         'path_img'
     ];
 
+    // DB RELATION
+    // **post <-> info_posts
 
+    public function infoPost() {
+        return $this->hasOne('App\InfoPost');
+    }
+
+    // post <--->comments
+      public function comments() {
+        return $this->hasMany('App\Comment');
+    }
 
 }

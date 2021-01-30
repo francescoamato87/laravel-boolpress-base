@@ -13,7 +13,7 @@ class InfoPostsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
         // Create a record for every post
         $posts = Post::all();
@@ -23,12 +23,10 @@ class InfoPostsTableSeeder extends Seeder
            $newInfo = new InfoPost();
             // set valori colonne
            $newInfo->post_id = $post->id;
-           $newInfo->post_status = $faker->randomElements(['public', 'private', 'draft']);
-           $newInfo->comment_status = $faker->randomElements(['open', 'closed', 'private']);
+           $newInfo->post_status = $faker->randomElement(['public', 'private', 'draft']);
+           $newInfo->comment_status = $faker->randomElement(['open', 'closed', 'private']);
             // salvataggio
             $newInfo->save();
-
-            // non hai ancora runnato MIN 37.00
 
 
         }
